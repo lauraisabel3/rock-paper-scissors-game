@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import rockImg from '../../assets/rock.png'
 import paperImg from '../../assets/paper.png'
 import scirssorsImg from '../../assets/scirssor.png'
@@ -8,10 +8,15 @@ import Modal from "../Modal";
 const Main = () => {
   let machineElection;
 
+
+
   const [ userOption, setUserOption] = useState('');
   const [ result, setResult] = useState(undefined);
-
-  const [showModal, setShowModal] = useState(false)
+  const [machineCounter, setMachineCounter] = useState(0)
+  const [ userCounter, setUserCounter ] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+ 
+  
   const range =  (min, max) => {
     let number = Math.floor(Math.random() * (max - min +1) + min);
     return number
@@ -31,15 +36,16 @@ const Main = () => {
 
     if(userOption === 0) {
         if( machineElection === 0) {
-            setResult('tie')
+            setResult('tie');
           
         }else {
           if(machineElection === 1) {
-            setResult('lose')
+            setResult('lose');
+            setMachineCounter(machineCounter + 1);
           }else {
             if(machineElection === 2) {
-              setResult('win')
-            
+              setResult('win');
+              setUserCounter(userCounter + 1);
             }
           }
         }
@@ -47,13 +53,15 @@ const Main = () => {
 
     if(userOption === 1) {
       if( machineElection === 0) {
-        setResult('win')
+        setResult('win');
+        setUserCounter(userCounter + 1);
       }else {
         if(machineElection === 1) {
           setResult('tie')
         }else {
           if(machineElection === 2) {
-            setResult('lose')
+            setResult('lose');
+            setMachineCounter(machineCounter + 1);
           }
         }
       }
@@ -61,13 +69,15 @@ const Main = () => {
 
     if(userOption === 2) {
       if( machineElection === 0) {
-        setResult('lose')
+        setResult('lose');
+        setMachineCounter(machineCounter + 1);
       }else {
         if(machineElection === 1) {
-          setResult('win')
+          setResult('win');
+          setUserCounter(userCounter + 1);
         }else {
           if(machineElection === 2) {
-            setResult('tie')
+            setResult('tie');
           }
         }
       }
@@ -79,9 +89,13 @@ const Main = () => {
    }
 
   return (
-    <>
+    <div className={styles.container}>
+    <div className={styles.container__score}>
+        <span>Tu puntaje <br/> {userCounter}</span>
+        <span>Puntaje máquina <br/>{machineCounter}</span>
+      </div>
       <div className={styles.container__main}>
-        <h1>Juega contra la máquina</h1>
+        <h1>Selecciona y juega contra la máquina</h1>
         <div className={styles.container__secondary}>
           <div
             role="button"
@@ -120,9 +134,9 @@ const Main = () => {
           <h3>PAPEL O</h3>
           <h3>TIJERA</h3>
         </div>
-        { showModal && <Modal result={result} handleDisplay={handleDisplay} />}
+        { result != undefined && showModal && <Modal result={result} handleDisplay={handleDisplay} />}
       </div>
-    </>
+    </div>
   )
 }
 

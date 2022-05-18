@@ -1,7 +1,38 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container__score {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  padding: 20px 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.container__score span {
+  width: 120px;
+  height: auto;
+  margin-right: 12px;
+  text-align: center;
+  font-size: 1.4rem;
+  border-radius: 4px;
+  background-color: var(--light-green);
+  box-shadow: 1px 1px 8px var(--dark-green);
+  color: white;
+}
+
 .container__main {
   max-width: 600px;
   height: auto;
-  margin: 200px auto 0 auto;
+  margin: 0 auto;
   padding: 20px;
   background-color: var(--white);
   border-radius: 20px;
