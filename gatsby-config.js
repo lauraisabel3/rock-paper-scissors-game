@@ -2,5 +2,13 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [],
+  plugins: [
+    {
+      resolve: `gatsby-plugin-portal`,
+      options: {
+        key: 'portal',
+        id: 'portal',        
+      },
+    }
+  ],
 }

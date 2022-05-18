@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --white:  #FCF2F0;
+  --light-green: #88DBD3;
+  --dark-green: #87CDD1;
+}
+body {
+  padding: 20px;
+  font-family: 'Radio Canada', sans-serif;
+}
